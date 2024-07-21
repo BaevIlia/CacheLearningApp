@@ -11,7 +11,7 @@ namespace CacheLearningApp.Database
         {
             _configuration = configuration;
         }
-
+        public DbSet<User> User { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_configuration.GetConnectionString("Database"));
