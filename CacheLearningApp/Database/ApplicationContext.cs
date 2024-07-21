@@ -14,7 +14,7 @@ namespace CacheLearningApp.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(_configuration.GetConnectionString("Database"));
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("Database"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
