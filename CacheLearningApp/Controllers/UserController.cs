@@ -9,18 +9,18 @@ namespace CacheLearningApp.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly ApplicationContext _context;
-        public UserController(ApplicationContext context)
+        private readonly UserService _userService;
+        public UserController(UserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
 
 
-        [HttpGet("getAllUsers")]
-        public IActionResult GetAll() 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAll(int id) 
         {
-            return Ok(_context.User.ToList());
+            return Ok(await _userService.GetUser(id));
         }
     }
 }
