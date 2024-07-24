@@ -9,8 +9,8 @@ namespace CacheLearningApp.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly UserService _userService;
-        public UserController(UserService userService)
+        private readonly MockRedisUserService _userService;
+        public UserController(MockRedisUserService userService)
         {
             _userService = userService;
         }

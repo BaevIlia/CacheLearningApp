@@ -13,6 +13,12 @@ namespace CacheLearningApp
             builder.Services.AddScoped<SqlServerContext>();
             builder.Services.AddScoped<PostgreSqlContext>();
             builder.Services.AddTransient<UserService>();
+            builder.Services.AddTransient<MockRedisUserService>();
+            builder.Services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = "localhost";
+                options.InstanceName = "local";
+            });
             builder.Services.AddControllers();
            builder.Services.AddMemoryCache();
             var app = builder.Build();
