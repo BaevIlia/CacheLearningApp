@@ -7,10 +7,10 @@ namespace CacheLearningApp.Services
 {
     public class UserService
     {
-        ApplicationContext _context;
+        PostgreSqlContext _context;
         IMemoryCache _cache;
 
-        public UserService(ApplicationContext context, IMemoryCache cache)
+        public UserService(PostgreSqlContext context, IMemoryCache cache)
         {
             _context = context;
             _cache = cache;
@@ -24,7 +24,7 @@ namespace CacheLearningApp.Services
 
             if (user == null)
             {
-                user = await _context.User.Where(u=>u.Id == id).FirstOrDefaultAsync();
+                user = await _context.Users.Where(u=>u.Id == id).FirstOrDefaultAsync();
                 if (user != null)
                 {
                     Console.WriteLine($"{user.Name} извлечён из БД");
